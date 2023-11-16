@@ -1,0 +1,104 @@
+@font-face {
+	font-family: 'Libre Baskerville';
+	src: url("/polices/LibreBaskerville-Regular.ttf") format("opentype"),
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+/*-------FEUILLE AVENTURE------------*/
+#onglet {
+    position: absolute;
+    top:0; right: 0; /*-380px;*/
+    border: green solid 1px;
+    width: 400px;
+    height: 100%;
+    transition: all 0.3s ease-in-out;
+}
+#opener {
+    position: relative;
+    top:0; left:0;
+    border: solid red 1px;
+    width: 20px; height: 20px;
+    text-align: center;
+
+}
+#carac-heros-container {
+    display: flex;
+    border: black 1px solid;
+    justify-content: space-around;
+}
+.carac-heros {
+    width: 75px;
+    height: 75px;
+    border: black 1px solid;
+}
+#onglet table {
+    border: black 1px solid;
+    width: 300px;
+}
+#onglet tr,
+#onglet td {
+    border: black 1px solid;
+}
+
+#or-armu-repas-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+/*-------INTERFACE------------*/
+#ecran {
+    border: black solid 1px;
+    width: 500px;
+    height: 300px;
+    margin: auto;
+    /*background-image: url('assets/squelette.bmp');*/
+    background-position-x: center;
+    background-position-y: -55px;
+}
+
+#texte {
+    border: red solid 1px;
+    
+}
+
+h1 {
+    font-family: 'Libre Baskerville';
+}
+h3 {
+    text-align: center;
+}
+span {
+    font-weight: bold;
+    cursor: pointer;
+}
+#div-pour-des {
+    display: flex;
+}
+.des {
+    width: 50px;
+    height: 50px;
+    border: red solid 1px;
+}
+
+#creature-sheet {
+    border: black 1px solid;
+    
+}
+#creature-container {
+    display: flex;
+    border: green 1px solid;
+}
+.creature-carac {
+    border: black 1px solid;
+    width: 50px;
+    height: 50px;
+}
+
+
+/*-------------------------------*/

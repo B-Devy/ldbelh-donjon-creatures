@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LDVELH 1</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="assets/sword.png" />
+</head>
+
+
+<body>
+    <div id="onglet">
+        <div id="opener">></div>
+        <div id="carac-heros-container">
+            <div class="carac-heros" id="carac-heros-hab">
+                <div>HAB</div>
+                <div id="hab-score"></div>
+            </div>
+            <div class="carac-heros" id="carac-heros-end">
+                <div>END</div>
+                <div id="end-score"></div>
+            </div>
+            <div class="carac-heros"id="carac-heros-cha">
+                <div>CHA</div>
+                <div id="cha-score"></div>
+            </div>
+        </div>
+
+        <div>
+            <table>
+                <tr>
+                    <td id="case-arme-nom-1">arme</td><td id="case-arme-dgt-1">degat</td>
+                </tr>
+                <tr>
+                    <td id="case-arme-nom-2">arme</td><td id="case-arme-dgt-1">degat</td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="or-armu-repas-container">
+            <div class="carac-heros" id="carac-heros-hab">
+                <div>Or</div>
+                <div id="or-score"></div>
+            </div>
+            <div class="carac-heros" id="carac-heros-end">
+                <div>Armure</div>
+                <div id="armu-score"></div>
+            </div>
+            <div class="carac-heros"id="carac-heros-cha">
+                <div>Repas</div>
+                <div id="repas-score"></div>
+            </div>
+        </div>
+        <button id="create-heros">Créer votre personnage</button>
+    </div>
+
+
+    <h1>Le Donjon des Créatures</h1>
+    <div id="ecran"></div>
+    <div id="texte">
+        <h3></h3>
+        <div id="paragraphe"><p></p></div>
+
+    </div>
+
+    <section>
+        <h4>Lancer les dés</h4>
+        <button id="lanceur-des">Lancer les dés</button>
+        <div id="div-pour-des">
+            <div id="d6num1" class="des">1</div>
+            <div id="d6num2" class="des">6</div>
+        </div>
+    </section>
+
+    <section id="creature-sheet">
+        <h4>Créature</h4>
+        <div id="creature-container">
+            <div id="hab-creature" class="creature-carac">0</div>
+            <div id="end-creature" class="creature-carac">0</div>
+        </div>
+    </section>
+    
+    
+    <script type="module" src="script.js"></script>
+    
+</body>
+</html>
