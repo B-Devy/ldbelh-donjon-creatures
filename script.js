@@ -84,13 +84,14 @@ function affichePara() {
                     creatureEnd.innerHTML = monstreCourant.end;
                     if (monstreCourant.end <= 0) {
                         console.log('Monstre battu !');
-                        mettrePara()
-                        paraCourantObj.combat = false
+                        paraCourantObj.combat = false;
+                        affichePara();
                     }
                 } else if (player.hab + d6num1 + d6num2 < monstreCourant.hab + resEnnemi) {
-                    console.log('Créature touche !')
+                    player.end -= 2;
+                    console.log('Créature touche !' + player.end)
                 } else {
-                    console.log('match nul !' + {resEnnemi})
+                    console.log('Round nul !')
                 }
             }
         }
@@ -100,25 +101,15 @@ function affichePara() {
         creatureContainer.style.display = "none";
         let span = document.getElementsByTagName('span');
         let span2 = Array.from(span)
-        console.log(span2)
         span2.map((s) => s.addEventListener('click', () => {
             let currentPara = s.getAttribute('name')
-            let currentObject = scenario.find(e => e.numero == currentPara)
-            paraCourantObj = currentObject;
-            mettrePara();
-            affichePara();
-        }))
+            paraCourantObj = scenario.find(e => e.numero == currentPara)
+            affichePara()
+    }))
+        
     }
-
-    function mettrePara() {
-        console.log('Mettre les para ok')
-    }
-    
-    
-
     
 }
-
 affichePara()
 
 /*-----------LANCEUR DE DES--------------*/
@@ -165,10 +156,8 @@ const potionScore = document.getElementById('potion-score');
 const repasScore = document.getElementById('repas-score');
 
 
-
 function createPlayer() {
 
-    
     let hab = (Math.floor(Math.random() * (6 - 1 + 1)) + 1) + 6;
     let end = (Math.floor(Math.random() * (12 - 2 + 2)) + 2) + 12;
     let cha = (Math.floor(Math.random() * (6 - 1 + 1)) + 1) + 6;
