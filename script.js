@@ -5,17 +5,20 @@ import { Joueur } from './joueursheet.js'
 let player = {};
 let paraCourantObj = scenario[0];  
 let marqueurOnglet = false;
-let monstreCourant = {}  
+let monstreCourant = {};
+let d6num1;
+let d6num2;  
 
 const ecran = document.getElementById('ecran');
 const paragraphe = document.getElementById('paragraphe');
-const btnLanceur = document.getElementById('lanceur-des').addEventListener('click', lanceur)
+const btnLanceur = document.getElementById('lanceur-des');
+btnLanceur.addEventListener('click', lanceur);
 const d6num1cont = document.getElementById('d6num1');
 const d6num2cont = document.getElementById('d6num2');
 const boutonCreation = document.getElementById('create-heros')
 boutonCreation.addEventListener('click', createPlayer);
 
-const creatureContainer = document.getElementById('creature-container');
+const creatureContainer = document.getElementById('creature-sheet');
 const creatureHab = document.getElementById('hab-creature');
 const creatureEnd = document.getElementById('end-creature');
 const h3 = document.querySelector('h3')
@@ -39,6 +42,10 @@ function ouvreFerme() {
 /*-----------AFFICHAGE DU PARAGRAPHE--------------*/
 
 function affichePara() {
+    console.log({paraCourantObj})
+    h3.innerHTML = paraCourantObj.numero;
+    paragraphe.innerHTML = paraCourantObj.texte;
+    
 
     if (paraCourantObj.numero != 0) {
         boutonCreation.style.display = "none"
@@ -59,21 +66,57 @@ function affichePara() {
         creatureEnd.innerHTML = monstreCourant.end;
         console.log(monstreCourant)
         creatureContainer.style.display = "flex";
+        const ennScore = document.getElementById('ennscore');
+        
+        
+        function lanceurCombat() {
+            d6num1 = null;
+            d6num2 = null;
+            btnLanceur.addEventListener('click', round)
+
+            function round() {
+                let resEnnemi = Math.floor(Math.random() * (12 - 2 + 2)) + 2;
+                ennScore.innerText = resEnnemi;
+                lanceur();
+                if (player.hab + d6num1 + d6num2 > monstreCourant.hab + resEnnemi) {
+                    console.log('Héros touche !' +  (player.hab + d6num1 + d6num2 ) )
+                    monstreCourant.end -= 2;
+                    creatureEnd.innerHTML = monstreCourant.end;
+                    if (monstreCourant.end <= 0) {
+                        console.log('Monstre battu !');
+                        mettrePara()
+                        paraCourantObj.combat = false
+                    }
+                } else if (player.hab + d6num1 + d6num2 < monstreCourant.hab + resEnnemi) {
+                    console.log('Créature touche !')
+                } else {
+                    console.log('match nul !' + {resEnnemi})
+                }
+            }
+        }
+        lanceurCombat();
+
     } else {
         creatureContainer.style.display = "none";
+        let span = document.getElementsByTagName('span');
+        let span2 = Array.from(span)
+        console.log(span2)
+        span2.map((s) => s.addEventListener('click', () => {
+            let currentPara = s.getAttribute('name')
+            let currentObject = scenario.find(e => e.numero == currentPara)
+            paraCourantObj = currentObject;
+            mettrePara();
+            affichePara();
+        }))
     }
 
-    h3.innerHTML = paraCourantObj.numero;
-    paragraphe.innerHTML = paraCourantObj.texte;
+    function mettrePara() {
+        console.log('Mettre les para ok')
+    }
+    
+    
 
-    let span = document.getElementsByTagName('span');
-    let span2 = Array.from(span)
-    span2.map((s) => s.addEventListener('click', () => {
-        let currentPara = s.getAttribute('name')
-        let currentObject = scenario.find(e => e.numero == currentPara)
-        paraCourantObj = currentObject;
-        affichePara()
-    }))
+    
 }
 
 affichePara()
@@ -81,10 +124,30 @@ affichePara()
 /*-----------LANCEUR DE DES--------------*/
 
 function lanceur() {
-    let d6num1 = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
-    let d6num2 = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
+    d6num1 = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
+    d6num2 = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
     d6num1cont.innerHTML = d6num1;
     d6num2cont.innerHTML = d6num2;
+
+    function diceImager(variable, container) {
+        switch(variable) {
+            case 1: container.style.backgroundImage = "url('dice/face1.png')";
+            break;
+            case 2: container.style.backgroundImage = "url('dice/face2.png')";
+            break;
+            case 3: container.style.backgroundImage = "url('dice/face3.png')";
+            break;
+            case 4: container.style.backgroundImage = "url('dice/face4.png')";
+            break;
+            case 5: container.style.backgroundImage = "url('dice/face5.png')";
+            break;
+            case 6: container.style.backgroundImage = "url('dice/face6.png')";
+            break;
+        }
+    }
+    
+    diceImager(d6num1, d6num1cont);
+    diceImager(d6num2, d6num2cont);
     //console.log(d6num1 + ' ' + d6num2)
 }
 
@@ -98,7 +161,7 @@ const arme1Dgt = document.getElementById('case-arme-dgt-1');
 const arme2Nom = document.getElementById('case-arme-nom-2');
 const arme2Dgt = document.getElementById('case-arme-dgt-1');
 const orScore = document.getElementById('or-score');
-const armuScore = document.getElementById('armu-score');
+const potionScore = document.getElementById('potion-score');
 const repasScore = document.getElementById('repas-score');
 
 
@@ -123,7 +186,7 @@ function createPlayer() {
     joueurCha.innerText = player.cha;
     arme1Nom.innerText = player.arme;
     orScore.innerText = player.or;
-    armuScore.innerText = player.armure;
+    potionScore.innerText = player.armure;
     repasScore.innerText = player.repas
 
 }

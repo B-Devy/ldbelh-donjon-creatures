@@ -21,7 +21,7 @@ export const scenario = [
         combat: true,
         creature: {
             nom: "Squelette",
-            hab: 5,
+            hab: 8,
             end: 6
         }
 
