@@ -9,15 +9,20 @@
     box-sizing: border-box;
     
 }
+body {
+    background-image: url('/assets/backgroundParchemin.png');
+}
 
 /*-------FEUILLE AVENTURE------------*/
 #onglet {
     position: absolute;
-    top:0; right: 0; /*-380px;*/
+    top:0; right: 0px;
     border: green solid 1px;
     width: 400px;
     height: 100%;
+    background-color: rgb(255, 241, 204);
     transition: all 0.3s ease-in-out;
+    z-index: 1;
 }
 #opener {
     position: relative;
@@ -25,11 +30,11 @@
     border: solid red 1px;
     width: 20px; height: 20px;
     text-align: center;
+    cursor: pointer;
 
 }
 #carac-heros-container {
     display: flex;
-    border: black 1px solid;
     justify-content: space-around;
 }
 .carac-heros {
@@ -50,12 +55,18 @@
     display: flex;
     justify-content: space-around;
 }
+.row-sheet {
+    margin-top: 20px;
+    border: dotted purple 1px;
+    display: flex;
+    justify-content: center;
+}
 
 /*-------INTERFACE------------*/
 #ecran {
     border: black solid 1px;
     width: 500px;
-    height: 300px;
+    height: 500px;
     margin: auto;
     /*background-image: url('assets/squelette.bmp');*/
     background-position-x: center;
@@ -64,6 +75,8 @@
 
 #texte {
     border: red solid 1px;
+    width: 700px;
+    margin: auto;
     
 }
 
@@ -77,6 +90,12 @@ span {
     font-weight: bold;
     cursor: pointer;
 }
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 #div-pour-des {
     display: flex;
 }
@@ -84,20 +103,27 @@ span {
     width: 50px;
     height: 50px;
     border: red solid 1px;
+    background-size: cover;
 }
 
 #creature-sheet {
     border: black 1px solid;
+    display: none;
     
 }
 #creature-container {
     display: flex;
-    border: green 1px solid;
+    border: green 3px solid;
 }
 .creature-carac {
     border: black 1px solid;
     width: 50px;
     height: 50px;
+    font-family: 'Libre Baskerville';
+    font-size: 26px;
+    font-weight: bold;
+    text-align: center;
+    margin: auto;
 }
 
 

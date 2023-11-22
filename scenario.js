@@ -8,6 +8,21 @@ export const scenario = [
     },
     {
         numero: 33,
+        texte: " qsfqsdfodio digndfdsfissimos ducimus qui<span name='0'>Rendez-vous au paragraphe 0</span> blfdfanditiis praesentium <span name='62'>Sinon, rendez-vous au paragraphe 62</span><span name='44'>Autrement, rendez-vous au paragraphe 44</span>",
+        illustration: false,
+        combat: false
+
+    },
+    {
+        numero: 44,
+        texte: "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum ",
+        illustration: false,
+        combat: false,
+        objet: "Baguette magique"
+
+    },
+    {
+        numero: 52,
         texte: " qsfqsdfodio digndfdsfissimos ducimus qui<span name='0'>Rendez-vous au paragraphe 0</span> blfdfanditiis praesentium <span name='62'>Sinon, rendez-vous au paragraphe 62</span>",
         illustration: false,
         combat: false
@@ -21,7 +36,7 @@ export const scenario = [
         combat: true,
         creature: {
             nom: "Squelette",
-            hab: 5,
+            hab: 8,
             end: 6
         }
 

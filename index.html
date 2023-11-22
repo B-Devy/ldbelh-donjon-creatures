@@ -12,7 +12,10 @@
 <body>
     <div id="onglet">
         <div id="opener">></div>
-        <div id="carac-heros-container">
+        
+        <div class="row-sheet"><h2>Feuille d'Aventure</h2></div>
+
+        <div id="carac-heros-container" class="row-sheet">
             <div class="carac-heros" id="carac-heros-hab">
                 <div>HAB</div>
                 <div id="hab-score"></div>
@@ -27,33 +30,50 @@
             </div>
         </div>
 
-        <div>
+        <div class="row-sheet">
             <table>
                 <tr>
                     <td id="case-arme-nom-1">arme</td><td id="case-arme-dgt-1">degat</td>
                 </tr>
                 <tr>
-                    <td id="case-arme-nom-2">arme</td><td id="case-arme-dgt-1">degat</td>
+                    <td id="case-arme-nom-2">arme de jet</td><td id="case-arme-dgt-1">degat</td>
                 </tr>
             </table>
         </div>
 
-        <div id="or-armu-repas-container">
+        <div id="or-armu-repas-container" class="row-sheet">
             <div class="carac-heros" id="carac-heros-hab">
                 <div>Or</div>
                 <div id="or-score"></div>
             </div>
             <div class="carac-heros" id="carac-heros-end">
-                <div>Armure</div>
-                <div id="armu-score"></div>
+                <div>Potion</div>
+                <div id="potion-score"></div>
             </div>
             <div class="carac-heros"id="carac-heros-cha">
                 <div>Repas</div>
                 <div id="repas-score"></div>
             </div>
         </div>
-        <button id="create-heros">Créer votre personnage</button>
-    </div>
+
+        <div class="row-sheet">
+            <table>
+                <tr>
+                    <td id="armu-nom">Armure</td><td id="armu-protec">Protection</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="row-sheet">
+            <table id="obj-list">
+                <tr><th id="objet-nom">Equipement</th></tr>
+                
+            </table>
+        </div>
+
+        <div class="row-sheet"><button id="create-heros">Créer votre personnage</button></div>
+        
+    </div>   <!--fin de la feuille de perso-->
 
 
     <h1>Le Donjon des Créatures</h1>
@@ -79,6 +99,7 @@
             <div id="hab-creature" class="creature-carac">0</div>
             <div id="end-creature" class="creature-carac">0</div>
         </div>
+        <div id="ennscore">Jet Ennemi</div>
     </section>
     
     
