@@ -16,7 +16,11 @@ body {
 /*-------FEUILLE AVENTURE------------*/
 #onglet {
     position: absolute;
+<<<<<<< HEAD
     top:0; right: 0px;
+=======
+    top:0; right: -380px;
+>>>>>>> 7efca7bacbf2cd80721fe7b25c555d3ceaa5af0b
     border: green solid 1px;
     width: 400px;
     height: 100%;
