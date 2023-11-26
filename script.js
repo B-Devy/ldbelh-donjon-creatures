@@ -5,18 +5,13 @@ import { Joueur } from './joueursheet.js'
 let player = {};
 let playerCree = false;
 let paraCourantObj = scenario[0];  
-<<<<<<< HEAD
+
 let marqueurOnglet = true;
 let monstreCourant = {};
 let d6num1;
 let d6num2;  
 
-=======
-let marqueurOnglet = false;
-let monstreCourant = {};
-let d6num1;
-let d6num2;  
->>>>>>> 7efca7bacbf2cd80721fe7b25c555d3ceaa5af0b
+
 
 const ecran = document.getElementById('ecran');
 const paragraphe = document.getElementById('paragraphe');
@@ -117,11 +112,9 @@ function affichePara() {
             btnLanceur.addEventListener('click', round)
 
             function round() {
-<<<<<<< HEAD
+ 
                 let resEnnemi = Math.floor(Math.random() * (12 - 2 + 1)) + 2;
-=======
-                let resEnnemi = Math.floor(Math.random() * (12 - 2 + 2)) + 2;
->>>>>>> 7efca7bacbf2cd80721fe7b25c555d3ceaa5af0b
+
                 ennScore.innerText = resEnnemi;
                 lanceur();
                 if (player.hab + d6num1 + d6num2 > monstreCourant.hab + resEnnemi) {
@@ -143,11 +136,9 @@ function affichePara() {
         }
         lanceurCombat();
 
-<<<<<<< HEAD
+
     } else if (playerCree) {
-=======
-    } else {
->>>>>>> 7efca7bacbf2cd80721fe7b25c555d3ceaa5af0b
+
         creatureContainer.style.display = "none";
         let span = document.getElementsByTagName('span');
         let span2 = Array.from(span)
