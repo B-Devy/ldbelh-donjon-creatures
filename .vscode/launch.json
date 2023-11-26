@@ -12,14 +12,8 @@
                 "<node_internals>/**"
             ],
             "program": "${workspaceFolder}\\script.js",
-<<<<<<< HEAD
             "cwd": "${workspaceFolder}",
         }
     ]
-    
-=======
-        }
-    ],
-    "port": 5500
->>>>>>> 7efca7bacbf2cd80721fe7b25c555d3ceaa5af0b
+     
 }

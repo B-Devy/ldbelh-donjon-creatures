@@ -3,6 +3,11 @@ export class Joueur {
         this.hab = hab;
         this.end = end;
         this.cha = cha;
+
+        this.habdep = hab;
+        this.enddep = end + 5;
+        this.chadep = cha;
+
         this.arme = arme;
         this.armure = armure;
         this.objet = objet;

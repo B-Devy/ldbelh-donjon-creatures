@@ -22,6 +22,10 @@ const d6num2cont = document.getElementById('d6num2');
 const boutonCreation = document.getElementById('create-heros')
 boutonCreation.addEventListener('click', createPlayer);
 const btnOpener = document.getElementById('opener');
+const btnConsomme = document.getElementById('btn-consomme');
+const scrDepartHab = document.getElementById('scr-depart-hab');
+const scrDepartEnd = document.getElementById('scr-depart-end');
+const scrDepartCha = document.getElementById('scr-depart-cha');
 
 const creatureContainer = document.getElementById('creature-sheet');
 const creatureHab = document.getElementById('hab-creature');
@@ -211,18 +215,24 @@ function createPlayer() {
 
     player = new Joueur(hab, end, cha, arme, armure, objet, or, potion, repas)
     console.log(player)
+    playerCree = true;
+    rafraichisseurDeSheet();
+    afficheurEquipement();
+}
+
+function rafraichisseurDeSheet() {
     joueurHab.innerText = player.hab;
     joueurEnd.innerText = player.end;
     joueurCha.innerText = player.cha;
+
+    scrDepartHab.innerText = " Score de départ: " + player.habdep;
+    scrDepartEnd.innerText = " Score de départ: " + player.enddep;
+    scrDepartCha.innerText = " Score de départ: " + player.chadep;
+
     arme1Nom.innerText = player.arme;
     orScore.innerText = player.or;
-    potionScore.innerText = player.armure;
+    potionScore.innerText = player.potion;
     repasScore.innerText = player.repas
-    
-    playerCree = true;
-    console.log({playerCree})
-    afficheurEquipement()
-
 }
 
 
@@ -231,6 +241,53 @@ function afficheurEquipement() {
     objetList.innerHTML = '<tr><th id="objet-nom">Equipement</th></tr>';
     player.objet.forEach(obj => objetList.innerHTML += `<tr><td class="un-objet">${obj}</td></tr>`)
 }
+
+
+/*------------CONSOMMATION DE REPAS----------------*/
+btnConsomme.addEventListener('click', () => healer(4) ) 
+
+
+function healer(x) {
+    if (!playerCree) {
+        return alert("Créez d'abord votre personnage.");
+    }
+    if (player.repas === 0 ) {
+        return alert("Vous n'avez plus de repas.");
+    }
+    if (x > (player.enddep - player.end)) {
+        console.log('vous avez trop manger')
+        player.repas--;
+        player.end = player.enddep;
+        rafraichisseurDeSheet();
+    } else {
+        player.end += x;
+        player.repas--;
+        console.log(player.end);
+        rafraichisseurDeSheet();
+    }
+}
+
+/*------------CONSOMMATION DE REPAS----------------*/
+const btnBoire = document.getElementById('btn-boire');
+btnBoire.addEventListener('click', () => {
+    if (player.potion === "Potion de santé") {
+        player.end += 6;
+        player.potion = "";
+        rafraichisseurDeSheet()
+    }
+})
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -12,15 +12,27 @@
 body {
     background-image: url('/assets/backgroundParchemin.png');
 }
+button {
+    display: inline-block;
+    font-family: 'Libre Baskerville';
+    font-weight: bold;
+    cursor: pointer;
+    background-color: rgb(206, 206, 173);
+    border: 1px double black;
+    padding: 5px;
+}
+button:hover {
+    background-color: rgb(226, 226, 186);
+}
+button:active {
+    background-color: rgb(117, 117, 95);
+}
 
 /*-------FEUILLE AVENTURE------------*/
 #onglet {
     position: absolute;
-<<<<<<< HEAD
     top:0; right: 0px;
-=======
-    top:0; right: -380px;
->>>>>>> 7efca7bacbf2cd80721fe7b25c555d3ceaa5af0b
+
     border: green solid 1px;
     width: 400px;
     height: 100%;
@@ -31,7 +43,7 @@ body {
 #opener {
     position: relative;
     top:0; left:0;
-    border: solid red 1px;
+    border: solid black 1px;
     width: 20px; height: 20px;
     text-align: center;
     cursor: pointer;
@@ -45,6 +57,47 @@ body {
     width: 75px;
     height: 75px;
     border: black 1px solid;
+}
+.habendcha {
+    font-family: 'Libre Baskerville';
+    text-align: center;
+    font-weight: bold;
+    border-bottom: black 1px solid;
+}
+.scr-depart {
+    font-size: 9px;
+    padding-left: 2px;
+}
+#hab-score,#end-score, #cha-score {
+    display: flex;
+    height: 55%;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+#or-score, #potion-score, #repas-score {
+    /*border: dotted black 1px;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 75%;
+    font-size: 25px;
+}
+#repas-score {
+    height: 29px;
+    
+}
+#btn-consomme,
+#btn-boire {
+    font-size: 9px;
+    width: 100%;
+}
+#potion-score {
+    font-size: 10px !important;
+    height: 29px;
 }
 #onglet table {
     border: black 1px solid;

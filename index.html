@@ -17,21 +17,25 @@
 
         <div id="carac-heros-container" class="row-sheet">
             <div class="carac-heros" id="carac-heros-hab">
-                <div>HAB</div>
+                <div class="habendcha">HAB</div>
+                <div class="scr-depart" id="scr-depart-hab"> Score de départ</div>
                 <div id="hab-score"></div>
             </div>
             <div class="carac-heros" id="carac-heros-end">
-                <div>END</div>
+                <div class="habendcha">END</div>
+                <div class="scr-depart" id="scr-depart-end"> Score de départ</div>
                 <div id="end-score"></div>
             </div>
             <div class="carac-heros"id="carac-heros-cha">
-                <div>CHA</div>
+                <div class="habendcha">CHA</div>
+                <div class="scr-depart" id="scr-depart-cha"> Score de départ</div>
                 <div id="cha-score"></div>
             </div>
         </div>
 
         <div class="row-sheet">
             <table>
+                <tr><th colspan="2">Armes</th></tr>
                 <tr>
                     <td id="case-arme-nom-1">arme</td><td id="case-arme-dgt-1">degat</td>
                 </tr>
@@ -42,17 +46,19 @@
         </div>
 
         <div id="or-armu-repas-container" class="row-sheet">
-            <div class="carac-heros" id="carac-heros-hab">
-                <div>Or</div>
+            <div class="carac-heros">
+                <div class="habendcha">Or</div>
                 <div id="or-score"></div>
             </div>
-            <div class="carac-heros" id="carac-heros-end">
-                <div>Potion</div>
+            <div class="carac-heros">
+                <div class="habendcha">Potion</div>
                 <div id="potion-score"></div>
+                <button id="btn-boire">Boire</button>
             </div>
-            <div class="carac-heros"id="carac-heros-cha">
-                <div>Repas</div>
+            <div class="carac-heros" id="carac-heros-repas">
+                <div class="habendcha">Repas</div>
                 <div id="repas-score"></div>
+                <button id="btn-consomme">Consommer</button>
             </div>
         </div>
 
@@ -68,8 +74,6 @@
 
             <table id="obj-list">
                 <tr><th id="objet-nom">Equipement</th></tr>
-                
-            
             </table>
         </div>
 
@@ -87,7 +91,7 @@
     </div>
 
     <section>
-        <h4>Lancer les dés</h4>
+        <h4>Lanceur</h4>
         <button id="lanceur-des">Lancer les dés</button>
         <div id="div-pour-des">
             <div id="d6num1" class="des">1</div>
