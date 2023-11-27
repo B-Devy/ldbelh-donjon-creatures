@@ -76,6 +76,12 @@ button:active {
     font-size: 25px;
     font-weight: 500;
 }
+#case-arme-dgt-1,
+#case-arme-dgt-2,
+#armu-protec {
+    text-align: center;
+    width: 40px;
+}
 
 #or-score, #potion-score, #repas-score {
     /*border: dotted black 1px;*/
@@ -172,15 +178,35 @@ section {
     display: flex;
     border: green 3px solid;
 }
+.creat-scr {
+    text-align: center;
+}
 .creature-carac {
     border: black 1px solid;
-    width: 50px;
+    width: 100px;
     height: 50px;
     font-family: 'Libre Baskerville';
     font-size: 26px;
     font-weight: bold;
     text-align: center;
     margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#creat-end-box {
+    position: relative;
+}
+#wound-creat {
+    border: solid purple 1px;
+    background-image: none;
+    background-position: center;
+    background-size: cover;
+    height: 100px;
+    width: 100px;
+    z-index: 1;
+    position: absolute;
+    top: 0;
 }
 
 

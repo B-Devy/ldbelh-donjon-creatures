@@ -13,6 +13,7 @@ let d6num2;
 
 
 
+
 const ecran = document.getElementById('ecran');
 const paragraphe = document.getElementById('paragraphe');
 const btnLanceur = document.getElementById('lanceur-des');
@@ -30,6 +31,8 @@ const scrDepartCha = document.getElementById('scr-depart-cha');
 const creatureContainer = document.getElementById('creature-sheet');
 const creatureHab = document.getElementById('hab-creature');
 const creatureEnd = document.getElementById('end-creature');
+const creatWound = document.getElementById('wound-creat');
+const ennScore = document.getElementById('ennscore');
 const h3 = document.querySelector('h3')
 
 /*-----------AFFICHAGE DE LA FICHE PERSO--------------*/
@@ -107,37 +110,9 @@ function affichePara() {
         creatureEnd.innerHTML = monstreCourant.end;
         console.log(monstreCourant)
         creatureContainer.style.display = "flex";
-        const ennScore = document.getElementById('ennscore');
         
         
-        function lanceurCombat() {
-            d6num1 = null;
-            d6num2 = null;
-            btnLanceur.addEventListener('click', round)
-
-            function round() {
- 
-                let resEnnemi = Math.floor(Math.random() * (12 - 2 + 1)) + 2;
-
-                ennScore.innerText = resEnnemi;
-                lanceur();
-                if (player.hab + d6num1 + d6num2 > monstreCourant.hab + resEnnemi) {
-                    console.log('Héros touche !' +  (player.hab + d6num1 + d6num2 ) )
-                    monstreCourant.end -= 2;
-                    creatureEnd.innerHTML = monstreCourant.end;
-                    if (monstreCourant.end <= 0) {
-                        console.log('Monstre battu !');
-                        paraCourantObj.combat = false;
-                        affichePara();
-                    }
-                } else if (player.hab + d6num1 + d6num2 < monstreCourant.hab + resEnnemi) {
-                    player.end -= 2;
-                    console.log('Créature touche !' + player.end)
-                } else {
-                    console.log('Round nul !')
-                }
-            }
-        }
+        
         lanceurCombat();
 
 
@@ -156,6 +131,56 @@ function affichePara() {
     
 }
 affichePara()
+
+function lanceurCombat() {
+    d6num1 = null;
+    d6num2 = null;
+    btnLanceur.removeEventListener('click', lanceur);
+    btnLanceur.addEventListener('click', round);
+
+    function round() {
+ 
+        let resEnnemi = Math.floor(Math.random() * (12 - 2 + 1)) + 2;
+    
+        ennScore.innerText = resEnnemi;
+        lanceur();
+        if (player.hab + d6num1 + d6num2 > monstreCourant.hab + resEnnemi) {
+            console.log('Héros touche !' +  (player.hab + d6num1 + d6num2 ) )
+            monstreCourant.end -= 2;
+            creatureEnd.innerHTML = monstreCourant.end;
+            let numrandom = Math.floor(Math.random() * 3)
+            creatWound.style.backgroundImage = "url('/assets/wounds/w" + numrandom + ".png')";
+            btnLanceur.style.display ="none";
+            //btnLanceur.setAttribute("disabled");
+            timerWound();
+            
+            if (monstreCourant.end <= 0) {
+                console.log('Monstre battu !');
+                paraCourantObj.combat = false;
+                affichePara();
+            }
+        } else if (player.hab + d6num1 + d6num2 < monstreCourant.hab + resEnnemi) {
+            player.end -= 2;
+            rafraichisseurDeSheet();
+            console.log('Créature touche !' + player.end)
+    
+        } else {
+            console.log('Round nul !')
+        }
+    }
+}
+
+
+
+function timerWound() {
+    setTimeout(function() {
+        creatWound.style.backgroundImage = "none";
+        btnLanceur.style.display ="initial";
+        //btnLanceur.removeAttribute("disabled")
+    },1000)
+}
+
+
 
 /*-----------LANCEUR DE DES--------------*/
 
@@ -184,7 +209,7 @@ function lanceur() {
     
     diceImager(d6num1, d6num1cont);
     diceImager(d6num2, d6num2cont);
-    //console.log(d6num1 + ' ' + d6num2)
+    console.log(d6num1 + ' ' + d6num2)
 }
 
 /*-----------CREATION DE PERSO--------------*/
@@ -195,7 +220,9 @@ const joueurCha = document.getElementById('cha-score');
 const arme1Nom = document.getElementById('case-arme-nom-1');
 const arme1Dgt = document.getElementById('case-arme-dgt-1');
 const arme2Nom = document.getElementById('case-arme-nom-2');
-const arme2Dgt = document.getElementById('case-arme-dgt-1');
+const arme2Dgt = document.getElementById('case-arme-dgt-2');
+const armuNom = document.getElementById('armu-nom');
+const armuProtec = document.getElementById('armu-protec');
 const orScore = document.getElementById('or-score');
 const potionScore = document.getElementById('potion-score');
 const repasScore = document.getElementById('repas-score');
@@ -206,8 +233,8 @@ function createPlayer() {
     let hab = (Math.floor(Math.random() * (6 - 1 + 1)) + 1) + 6;
     let end = (Math.floor(Math.random() * (12 - 2 + 1)) + 2) + 12;
     let cha = (Math.floor(Math.random() * (6 - 1 + 1)) + 1) + 6;
-    let arme = "Epée";
-    let armure = "Armure de cuir";
+    let arme = [{nom: "Epée", dgt: 2}, {nom: "Arbalète", dgt: 3}];
+    let armure = {nom: "Armure de cuir", protec: 0};
     let objet = ["Gourde", "Bouquet de fleur", "Ail"];
     let or = 5;
     let potion = "Potion de santé";
@@ -229,7 +256,13 @@ function rafraichisseurDeSheet() {
     scrDepartEnd.innerText = " Score de départ: " + player.enddep;
     scrDepartCha.innerText = " Score de départ: " + player.chadep;
 
-    arme1Nom.innerText = player.arme;
+    arme1Nom.innerText = player.arme[0].nom;
+    arme1Dgt.innerText = player.arme[0].dgt;
+    arme2Nom.innerText = player.arme[1].nom;
+    arme2Dgt.innerText = player.arme[1].dgt;
+    armuNom.innerText = player.armure.nom;
+    armuProtec.innerText = player.armure.protec;
+
     orScore.innerText = player.or;
     potionScore.innerText = player.potion;
     repasScore.innerText = player.repas
@@ -281,7 +314,7 @@ btnBoire.addEventListener('click', () => {
 
 
 
-
+// jprogression conditionnel avec objet ou pas
 
 
 

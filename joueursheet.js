@@ -5,7 +5,7 @@ export class Joueur {
         this.cha = cha;
 
         this.habdep = hab;
-        this.enddep = end + 5;
+        this.enddep = end;
         this.chadep = cha;
 
         this.arme = arme;
